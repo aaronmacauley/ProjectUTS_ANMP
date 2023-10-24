@@ -7,3 +7,15 @@ data class Menu(
     val deskripsi:String?,
     val harga:Int?
 )
+data class Order(
+    val order_id: String,
+    val no_table: Int,
+    val harga_total: Int,
+    val duration: String,
+    val status: Int
+)
+data class Waiter(
+    val img_url:String,
+    val work_since:String,
+    val name:String
+)
