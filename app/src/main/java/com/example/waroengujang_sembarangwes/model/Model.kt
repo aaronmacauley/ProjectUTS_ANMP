@@ -19,3 +19,9 @@ data class Waiter(
     val work_since:String,
     val name:String
 )
+data class OrderDetail(
+    val table:Int,
+    val duration:String,
+    val total_harga:Int,
+    val menu:String
+)

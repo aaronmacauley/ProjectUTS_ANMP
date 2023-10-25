@@ -3,13 +3,16 @@ package com.example.waroengujang_sembarangwes.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.waroengujang_sembarangwes.model.Order
 import com.example.waroengujang_sembarangwes.R
 
 
-class RvAdapterOrder(private val orderList: List<Order>)
+class RvAdapterOrder(private val orderList: List<Order>, private val navController: NavController)
     : RecyclerView.Adapter<RvAdapterOrder.OrderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
@@ -29,6 +32,11 @@ class RvAdapterOrder(private val orderList: List<Order>)
         } else {
             holder.itemView.visibility = View.GONE
         }
+        holder.btnDetail.setOnClickListener {
+            val action = OrderFragmentDirections.ActionOrderDetail()
+            holder.itemView.findNavController().navigate(action)
+        }
+
 
     }
 
@@ -42,5 +50,6 @@ class RvAdapterOrder(private val orderList: List<Order>)
         val totalPrice: TextView = itemView.findViewById(R.id.txtHargaOrder)
         val duration: TextView = itemView.findViewById(R.id.txtDurationOrder)
         val status: TextView = itemView.findViewById(R.id.txtStatusOrder)
+        val btnDetail: Button = itemView.findViewById(R.id.btnOrderDetail)
     }
 }
