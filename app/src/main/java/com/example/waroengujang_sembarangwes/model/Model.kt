@@ -25,3 +25,8 @@ data class OrderDetail(
     val total_harga:Int,
     val menu:String
 )
+
+data class CartItem(
+    val menuItem: Menu,
+    var quantity: Int,
+)

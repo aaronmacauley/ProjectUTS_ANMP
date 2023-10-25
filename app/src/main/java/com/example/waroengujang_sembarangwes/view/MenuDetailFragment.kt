@@ -1,6 +1,7 @@
 package com.example.waroengujang_sembarangwes.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +10,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.waroengujang_sembarangwes.R
+import com.example.waroengujang_sembarangwes.model.CartItem
+import com.example.waroengujang_sembarangwes.viewmodel.CartViewModel
 import com.example.waroengujang_sembarangwes.viewmodel.MenuDetailViewModel
 import com.squareup.picasso.Picasso
 
 class MenuDetailFragment : Fragment() {
     private lateinit var viewModel: MenuDetailViewModel
+    private lateinit var cartViewModel: CartViewModel
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -27,6 +33,7 @@ class MenuDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Initialize the ViewModel
         viewModel = ViewModelProvider(requireActivity()).get(MenuDetailViewModel::class.java)
+        cartViewModel = ViewModelProvider(requireActivity()).get(CartViewModel::class.java)
 
         // Observe the LiveData
         viewModel.menuLD.observe(viewLifecycleOwner, { menu ->
@@ -61,7 +68,21 @@ class MenuDetailFragment : Fragment() {
 
         // Add to cart disini.
         btnAddDetail?.setOnClickListener{
+            val menu = viewModel.menuLD.value
+            menu?.let { menuItem ->
+                val existingCartItem = cartViewModel.cartItems.value?.find { it.menuItem.nama == menuItem.nama }
 
+                if (existingCartItem != null) {
+                    existingCartItem.quantity += txtJumlahDetail?.text.toString().toInt()
+                } else {
+                    val cartItem = CartItem(menuItem, txtJumlahDetail?.text.toString().toInt())
+                    cartViewModel.addToCart(cartItem)
+                }
+            }
+
+            Toast.makeText(requireContext(), "Item added to Cart", Toast.LENGTH_SHORT).show()
+
+            Log.e("XXX", "asu: ${cartViewModel.cartItems.value}", )
         }
     }
 }
