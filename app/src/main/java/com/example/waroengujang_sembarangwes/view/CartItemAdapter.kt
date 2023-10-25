@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
@@ -14,9 +15,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.waroengujang_sembarangwes.R
 import com.example.waroengujang_sembarangwes.model.Menu
+import com.example.waroengujang_sembarangwes.viewmodel.SharedViewModel
 import com.squareup.picasso.Picasso
 
-class CartItemAdapter(private val cartItems: ArrayList<CartItem>)
+class CartItemAdapter(private val cartItems: ArrayList<CartItem>,
+                      private val sharedViewModel: SharedViewModel
+)
     : RecyclerView.Adapter<CartItemAdapter.CartItemViewHolder>() {
 
     class CartItemViewHolder(v: View): RecyclerView.ViewHolder(v)
@@ -35,6 +39,27 @@ class CartItemAdapter(private val cartItems: ArrayList<CartItem>)
 
         val cartItem = cartItems[position]
 
+        val imageButtonAdd = holder.itemView.findViewById<ImageButton>(R.id.imageButtonAdd)
+        val imageButtonMin = holder.itemView.findViewById<ImageButton>(R.id.imageButtonMin)
+
+        // Set the initial quantity
+        txtQty.text = cartItem.quantity.toString()
+
+        imageButtonAdd.setOnClickListener {
+            cartItem.quantity++
+            txtQty.text = cartItem.quantity.toString()
+            sharedViewModel.cartItems.value = ArrayList(cartItems)
+        }
+
+        imageButtonMin.setOnClickListener {
+            if (cartItem.quantity > 1) {
+                cartItem.quantity--
+                txtQty.text = cartItem.quantity.toString()
+            }
+            sharedViewModel.cartItems.value = ArrayList(cartItems)
+
+        }
+
 
         var nama = cartItem.menuItem.nama
         var harga = cartItem.menuItem.harga
@@ -48,7 +73,7 @@ class CartItemAdapter(private val cartItems: ArrayList<CartItem>)
 
     }
 
-    fun updateCart(newCart: ArrayList<CartItem>){
+    fun updateCart(newCart: List<CartItem>){
         cartItems.clear()
         cartItems.addAll(newCart)
         notifyDataSetChanged()

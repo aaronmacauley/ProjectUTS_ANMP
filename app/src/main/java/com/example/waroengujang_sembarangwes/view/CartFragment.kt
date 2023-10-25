@@ -15,9 +15,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.waroengujang_sembarangwes.R
 import com.example.waroengujang_sembarangwes.model.CartItem
 import com.example.waroengujang_sembarangwes.viewmodel.CartViewModel
+import com.example.waroengujang_sembarangwes.viewmodel.SharedViewModel
 
 class CartFragment : Fragment() {
-    private lateinit var cartViewModel: CartViewModel
+    private lateinit var sharedViewModel: SharedViewModel
     private lateinit var cartAdapter: CartItemAdapter
     private lateinit var txtSubtotal: TextView
     private lateinit var txtTax: TextView
@@ -29,40 +30,38 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_cart, container, false)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
-        // Initialize ViewModel
-        cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
-
-        // Initialize RecyclerView
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewCart)
         recyclerView.layoutManager = LinearLayoutManager(context)
+//        cartAdapter = sharedViewModel.cartAdapter.value ?: CartItemAdapter(ArrayList())
+        cartAdapter = CartItemAdapter(ArrayList(), sharedViewModel)
 
-        // Initialize subtotal, tax, and total TextViews
+        recyclerView.adapter = cartAdapter
+
         txtSubtotal = view.findViewById(R.id.txtSubtotal)
         txtTax = view.findViewById(R.id.txtTax)
         txtTotal = view.findViewById(R.id.txtTotal)
 
-        // Initialize the CartItemAdapter
-        cartAdapter = CartItemAdapter(ArrayList()) // Initialize with an empty list
-        recyclerView.adapter = cartAdapter
+        sharedViewModel.cartItems.observe(viewLifecycleOwner) { cartItems ->
 
-        // Observe changes in the cart items
-        cartViewModel.cartItems.observe(viewLifecycleOwner, Observer { cartItems ->
-            // Update the adapter with the new cart items
             cartAdapter.updateCart(cartItems)
-
-            // Calculate subtotal, tax, and total based on cartItems and update corresponding TextViews
             val subtotal = calculateSubtotal(cartItems)
             val tax = calculateTax(subtotal)
             val total = subtotal + tax
-            txtSubtotal.text = "IDR $subtotal"
-            txtTax.text = "IDR $tax"
-            txtTotal.text = "IDR $total"
-        })
+
+            sharedViewModel.subtotal.value = subtotal
+            sharedViewModel.tax.value = tax
+            sharedViewModel.total.value = total
+
+            txtSubtotal.text = "Subtotal: IDR $subtotal"
+            txtTax.text = "Tax (10%): IDR $tax"
+            txtTotal.text = "Total: IDR $total"
+        }
 
         return view
     }
-    
+
     private fun calculateSubtotal(cartItems: List<CartItem>): Double {
         return cartItems.sumOf { it.menuItem.harga!!.toDouble() * it.quantity }
     }
