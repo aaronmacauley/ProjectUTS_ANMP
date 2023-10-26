@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import com.example.waroengujang_sembarangwes.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -27,6 +28,8 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
+                Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
+
             } else {
                 Snackbar.make(loginButton, "Username atau Password anda Salah", Snackbar.LENGTH_SHORT).show()
             }
