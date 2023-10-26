@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.waroengujang_sembarangwes.R
 import com.example.waroengujang_sembarangwes.viewmodel.OrderDetailViewModel
 import androidx.navigation.fragment.findNavController
@@ -49,7 +50,7 @@ class OrderDetailFragment : Fragment() {
 
         btnOrderMore.setOnClickListener {
             val action = OrderDetailFragmentDirections.ActionItemMenu()
-            findNavController().navigate(action)
+            Navigation.findNavController(it).navigate(action)
         }
 
 
