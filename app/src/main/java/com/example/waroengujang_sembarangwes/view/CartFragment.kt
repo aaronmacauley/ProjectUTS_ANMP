@@ -23,6 +23,7 @@ class CartFragment : Fragment() {
     private lateinit var txtSubtotal: TextView
     private lateinit var txtTax: TextView
     private lateinit var txtTotal: TextView
+    private lateinit var txtTableNum: TextView
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -42,6 +43,11 @@ class CartFragment : Fragment() {
         txtSubtotal = view.findViewById(R.id.txtSubtotal)
         txtTax = view.findViewById(R.id.txtTax)
         txtTotal = view.findViewById(R.id.txtTotal)
+        txtTableNum = view.findViewById(R.id.txtTableNum)
+
+        sharedViewModel.tableNumber.observe(viewLifecycleOwner, { tableNumber ->
+            txtTableNum.text = "Table $tableNumber"
+        })
 
         sharedViewModel.cartItems.observe(viewLifecycleOwner) { cartItems ->
 

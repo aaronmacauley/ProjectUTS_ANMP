@@ -34,13 +34,11 @@ class MenuDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Initialize the ViewModel
         viewModel = ViewModelProvider(requireActivity()).get(MenuDetailViewModel::class.java)
         cartViewModel = ViewModelProvider(requireActivity()).get(CartViewModel::class.java)
         sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         cartAdapter = CartItemAdapter(cartViewModel.cartItems.value ?: ArrayList(), sharedViewModel)
 
-        // Observe the LiveData
         viewModel.menuLD.observe(viewLifecycleOwner, { menu ->
             val txtNamaDetail = view?.findViewById<TextView>(R.id.txtNamaDetail)
             val txtHargaDetail = view?.findViewById<TextView>(R.id.txtHargaDetail)

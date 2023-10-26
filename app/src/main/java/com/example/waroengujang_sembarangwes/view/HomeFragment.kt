@@ -37,7 +37,6 @@ class HomeFragment : Fragment() {
         val txtServingHome = view.findViewById<TextView>(R.id.txtServingHome)
 
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        //sharedviewmodel for transfer tablenumber to menufragment
         val sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
         btnSubmitHome.setOnClickListener {

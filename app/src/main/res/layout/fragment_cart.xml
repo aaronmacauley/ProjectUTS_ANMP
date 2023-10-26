@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:fontFamily="@font/brygada_1918_semibold"
-                    android:text="IDR 65.000"
+                    android:text="IDR 0"
                     app:layout_constraintBottom_toBottomOf="@+id/txtSubText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/txtSubText" />
@@ -111,7 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/brygada_1918_semibold"
-                    android:text="IDR 6.500"
+                    android:text="IDR 0"
                     app:layout_constraintBottom_toBottomOf="@+id/txtTaxText"
                     app:layout_constraintEnd_toEndOf="@+id/txtSubtotal"
                     app:layout_constraintTop_toTopOf="@+id/txtTaxText" />
@@ -121,7 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/brygada_1918_semibold"
-                    android:text="IDR 71.500"
+                    android:text="IDR 0"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/txtTotalText"
                     app:layout_constraintEnd_toEndOf="@+id/txtTax"
