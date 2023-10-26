@@ -6,86 +6,91 @@
     android:layout_height="match_parent"
     tools:context=".view.ProfileFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
-        <ImageView
-            android:id="@+id/imageViewProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.399"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/txtNamaProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="144dp"
-            android:layout_marginTop="32dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
+            <ImageView
+                android:id="@+id/imageViewProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:src="@drawable/ic_launcher_foreground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.399"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtWorkSince"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="144dp"
-            android:layout_marginTop="28dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNamaProfile" />
+            <TextView
+                android:id="@+id/txtNamaProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="144dp"
+                android:layout_marginTop="32dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="41dp"
-            android:layout_marginTop="52dp"
-            android:text="Change Password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtWorkSince" />
+            <TextView
+                android:id="@+id/txtWorkSince"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="144dp"
+                android:layout_marginTop="28dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNamaProfile" />
 
-        <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="265dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="29dp"
-            android:ems="10"
-            android:hint="Old password"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="52dp"
+                android:text="Change Password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtWorkSince" />
 
-        <EditText
-            android:id="@+id/editTextText3"
-            android:layout_width="266dp"
-            android:layout_height="66dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="New password"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@+id/editTextText2"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+            <EditText
+                android:id="@+id/editTextText2"
+                android:layout_width="265dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="29dp"
+                android:ems="10"
+                android:hint="Old password"
+                android:inputType="text"
+                app:layout_constraintStart_toStartOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-        <EditText
-            android:id="@+id/editTextText4"
-            android:layout_width="261dp"
-            android:layout_height="86dp"
-            android:layout_marginStart="4dp"
+            <EditText
+                android:id="@+id/editTextText3"
+                android:layout_width="266dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="New password"
+                android:inputType="text"
+                app:layout_constraintStart_toStartOf="@+id/editTextText2"
+                app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
 
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:hint="Retype new password"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@+id/editTextText3"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/editTextText4"
+                android:layout_width="261dp"
+                android:layout_height="86dp"
+                android:layout_marginStart="4dp"
+
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="Retype new password"
+                android:inputType="text"
+                app:layout_constraintStart_toStartOf="@+id/editTextText3"
+                app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </FrameLayout>
