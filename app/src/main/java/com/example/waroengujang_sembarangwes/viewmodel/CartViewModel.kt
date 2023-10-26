@@ -25,5 +25,9 @@ class CartViewModel (application: Application) : AndroidViewModel(application) {
 
     }
 
+    fun processToKitchen() {
+        cartItems.value?.clear()
+    }
+
 
 }
