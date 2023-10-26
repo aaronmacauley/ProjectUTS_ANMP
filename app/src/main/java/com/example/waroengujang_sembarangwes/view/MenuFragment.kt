@@ -68,13 +68,11 @@ class MenuFragment : Fragment() {
         btnSearch.setOnClickListener {
             val searchQuery = editSearch.text?.toString()?.trim()
 
-            // Use the existing menusLD data to filter the menu items
             val menus = viewModel.menusLD.value
             val filteredMenu = menus?.filter { menu ->
                 searchQuery?.let { it1 -> menu?.nama?.contains(it1, ignoreCase = true) } == true
             }
 
-            // Update the RecyclerView with the filtered menu items
             menuAdapter.updateMenu(filteredMenu as ArrayList<Menu>)
         }
     }

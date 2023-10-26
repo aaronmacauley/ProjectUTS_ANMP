@@ -72,8 +72,8 @@
 
             <ImageButton
                 android:id="@+id/imageButtonAdd"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="#FF0000"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -84,8 +84,8 @@
 
             <ImageButton
                 android:id="@+id/imageButtonMin"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="#FF0000"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -102,10 +102,11 @@
                 android:gravity="center"
                 android:inputType="number"
                 android:text="0"
-                app:layout_constraintBottom_toBottomOf="@+id/imageButtonAdd"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageButtonAdd"
                 app:layout_constraintStart_toEndOf="@+id/imageButtonMin"
-                app:layout_constraintTop_toTopOf="@+id/imageButtonAdd" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
