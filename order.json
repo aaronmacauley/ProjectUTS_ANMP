@@ -1,0 +1,25 @@
+[
+      {
+        "order_id": "ORD123",
+        "no_table": 5,
+        "harga_total": 250000,
+        "duration": "45 minutes",
+        "status":0
+      },
+      {
+        "order_id": "ORD124",
+        "no_table": 3,
+        "harga_total": 175000,
+        "duration": "30 minutes",
+        "status":0
+      },
+      {
+        "order_id": "ORD125",
+        "no_table": 8,
+        "harga_total": 320000,
+        "duration": "50 minutes",
+        "status":1
+      }
+    
+    ]
+  
