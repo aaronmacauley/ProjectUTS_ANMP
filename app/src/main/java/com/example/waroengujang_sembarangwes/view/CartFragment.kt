@@ -17,6 +17,7 @@ import com.example.waroengujang_sembarangwes.R
 import com.example.waroengujang_sembarangwes.model.CartItem
 import com.example.waroengujang_sembarangwes.viewmodel.CartViewModel
 import com.example.waroengujang_sembarangwes.viewmodel.SharedViewModel
+import kotlin.properties.Delegates
 
 class CartFragment : Fragment() {
     private lateinit var sharedViewModel: SharedViewModel
@@ -27,6 +28,8 @@ class CartFragment : Fragment() {
     private lateinit var txtTotal: TextView
     private lateinit var btnProses: Button
     private lateinit var txtTableNum: TextView
+    private lateinit var txtDiskon: TextView
+    private var total by Delegates.notNull<Double>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -49,6 +52,7 @@ class CartFragment : Fragment() {
         txtTotal = view.findViewById(R.id.txtTotal)
         btnProses = view.findViewById(R.id.btnProses)
         txtTableNum = view.findViewById(R.id.txtTableNum)
+        txtDiskon = view.findViewById(R.id.txtDiskon)
 
         sharedViewModel.tableNumber.observe(viewLifecycleOwner, { tableNumber ->
             txtTableNum.text = "Table $tableNumber"
@@ -59,7 +63,7 @@ class CartFragment : Fragment() {
             cartAdapter.updateCart(cartItems)
             val subtotal = calculateSubtotal(cartItems)
             val tax = calculateTax(subtotal)
-            val total = subtotal + tax
+            total = subtotal + tax
 
             sharedViewModel.subtotal.value = subtotal
             sharedViewModel.tax.value = tax
@@ -71,10 +75,14 @@ class CartFragment : Fragment() {
         }
 
         btnProses.setOnClickListener {
-            cartViewModel.processToKitchen()
+//            cartViewModel.processToKitchen()
+//
+//            sharedViewModel.cartItems.value = cartViewModel.cartItems.value
+//            sharedViewModel.cartAdapter.value = cartAdapter
 
-            sharedViewModel.cartItems.value = cartViewModel.cartItems.value
-            sharedViewModel.cartAdapter.value = cartAdapter
+            var newTotal = total-txtDiskon.text.toString().toDouble()
+            txtTotal.text = "Total: IDR $newTotal"
+
         }
 
         return view

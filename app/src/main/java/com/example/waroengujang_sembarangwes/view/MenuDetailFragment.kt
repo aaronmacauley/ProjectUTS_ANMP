@@ -39,19 +39,22 @@ class MenuDetailFragment : Fragment() {
         sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         cartAdapter = CartItemAdapter(cartViewModel.cartItems.value ?: ArrayList(), sharedViewModel)
 
+        val txtNamaDetail = view?.findViewById<TextView>(R.id.txtNamaDetail)
+        val txtHargaDetail = view?.findViewById<TextView>(R.id.txtHargaDetail)
+        val txtDeskripsiDetail = view?.findViewById<TextView>(R.id.txtDeskripsiDetail)
+        val imgFotoDetail = view?.findViewById<ImageView>(R.id.imgFotoDetail)
+        var txtHargaDetails = 0
         viewModel.menuLD.observe(viewLifecycleOwner, { menu ->
-            val txtNamaDetail = view?.findViewById<TextView>(R.id.txtNamaDetail)
-            val txtHargaDetail = view?.findViewById<TextView>(R.id.txtHargaDetail)
-            val txtDeskripsiDetail = view?.findViewById<TextView>(R.id.txtDeskripsiDetail)
-            val imgFotoDetail = view?.findViewById<ImageView>(R.id.imgFotoDetail)
 
             txtNamaDetail?.text = menu.nama
             txtHargaDetail?.text = menu.harga.toString()
+            txtHargaDetails = menu.harga!!
             txtDeskripsiDetail?.text = menu.deskripsi
             Picasso.get().load(menu.foto).into(imgFotoDetail)
         })
 
         var jumlah = 1
+        val txtPricee = view?.findViewById<TextView>(R.id.txtPricee)
         var txtJumlahDetail = view?.findViewById<TextView>(R.id.txtJumlahDetail)
         val btnAddDetail = view?.findViewById<Button>(R.id.btnAddDetail)
         val btnTambahDetail = view?.findViewById<Button>(R.id.btnTambahDetail)
@@ -60,6 +63,8 @@ class MenuDetailFragment : Fragment() {
         btnTambahDetail?.setOnClickListener{
             jumlah++
             txtJumlahDetail?.text = jumlah.toString()
+            var txtPriceTotal = txtHargaDetails * jumlah
+            txtPricee?.text = "Rp. $txtPriceTotal"
         }
 
         btnKurangDetail?.setOnClickListener{
