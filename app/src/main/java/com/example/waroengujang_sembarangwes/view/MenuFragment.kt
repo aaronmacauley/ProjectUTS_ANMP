@@ -14,6 +14,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.waroengujang_sembarangwes.R
+import com.example.waroengujang_sembarangwes.databinding.FragmentHomeBinding
+import com.example.waroengujang_sembarangwes.databinding.FragmentMenuBinding
 import com.example.waroengujang_sembarangwes.model.Menu
 import com.example.waroengujang_sembarangwes.viewmodel.MenuDetailViewModel
 import com.example.waroengujang_sembarangwes.viewmodel.MenuViewModel
@@ -23,6 +25,7 @@ class MenuFragment : Fragment() {
     private lateinit var viewModel: MenuViewModel
     private lateinit var menuDetailViewModel: MenuDetailViewModel
     private lateinit var menuAdapter : MenuAdapter
+    private lateinit var binding:FragmentMenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +36,9 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false)
+//        return inflater.inflate(R.layout.fragment_menu, container, false)
+        binding = FragmentMenuBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

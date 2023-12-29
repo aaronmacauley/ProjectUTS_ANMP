@@ -1,116 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.MenuDetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable name="menu" type="com.example.waroengujang_sembarangwes.model.Menu" />
+        <variable name="addToOrderListener" type="com.example.waroengujang_sembarangwes.view.addMenuToOrderListener" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.MenuDetailFragment">
 
-        <Button
-            android:id="@+id/btnAddDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="ADD"
-            app:layout_constraintEnd_toEndOf="@+id/btnTambahDetail"
-            app:layout_constraintStart_toStartOf="@+id/btnKurangDetail"
-            app:layout_constraintTop_toBottomOf="@+id/txtJumlahDetail" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnTambahDetail"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:text="+"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/txtDeskripsiDetail"
-            app:layout_constraintTop_toBottomOf="@+id/txtDeskripsiDetail" />
+            <Button
+                android:id="@+id/btnAddDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="ADD"
+                android:onClick="@{(view) -> addToOrderListener.onAddMenuToOrderListener(view)}"
+                app:layout_constraintEnd_toEndOf="@+id/btnTambahDetail"
+                app:layout_constraintStart_toStartOf="@+id/btnKurangDetail"
+                app:layout_constraintTop_toBottomOf="@+id/txtJumlahDetail" />
 
-        <Button
-            android:id="@+id/btnKurangDetail"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="112dp"
-            android:text="-"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/txtDeskripsiDetail"
-            app:layout_constraintTop_toBottomOf="@+id/txtDeskripsiDetail" />
+            <Button
+                android:id="@+id/btnTambahDetail"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:text="+"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/txtDeskripsiDetail"
+                app:layout_constraintTop_toBottomOf="@+id/txtDeskripsiDetail" />
 
-        <TextView
-            android:id="@+id/txtPricee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="PRICE BEFORE TAX"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/txtHargaDetail"
-            app:layout_constraintTop_toBottomOf="@+id/txtHargaDetail" />
+            <Button
+                android:id="@+id/btnKurangDetail"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="112dp"
+                android:text="-"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/txtDeskripsiDetail"
+                app:layout_constraintTop_toBottomOf="@+id/txtDeskripsiDetail" />
 
-        <TextView
-            android:id="@+id/txtNamaDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Nasi Goreng"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/imgFotoDetail"
-            app:layout_constraintTop_toBottomOf="@+id/imgFotoDetail" />
+            <TextView
+                android:id="@+id/txtPricee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="PRICE BEFORE TAX"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/txtHargaDetail"
+                app:layout_constraintTop_toBottomOf="@+id/txtHargaDetail" />
 
-        <TextView
-            android:id="@+id/txtHargaDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="IDR 15.000"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/imgFotoDetail"
-            app:layout_constraintTop_toBottomOf="@+id/txtDeskripsiDetail" />
+            <TextView
+                android:id="@+id/txtNamaDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Nasi Goreng"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/imgFotoDetail"
+                app:layout_constraintTop_toBottomOf="@+id/imgFotoDetail" />
 
-        <TextView
-            android:id="@+id/txtJumlahDetail"
-            android:layout_width="46dp"
-            android:layout_height="34dp"
-            android:text="1"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/btnTambahDetail"
-            app:layout_constraintEnd_toStartOf="@+id/btnTambahDetail"
-            app:layout_constraintStart_toEndOf="@+id/btnKurangDetail"
-            app:layout_constraintTop_toTopOf="@+id/btnKurangDetail" />
+            <TextView
+                android:id="@+id/txtHargaDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="IDR 15.000"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/imgFotoDetail"
+                app:layout_constraintTop_toBottomOf="@+id/txtDeskripsiDetail" />
 
-        <TextView
-            android:id="@+id/txtDeskripsiDetail"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            android:text="Nasi Goreng adalah.."
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/imgFotoDetail"
-            app:layout_constraintStart_toStartOf="@+id/txtNamaDetail"
-            app:layout_constraintTop_toBottomOf="@+id/txtNamaDetail" />
+            <TextView
+                android:id="@+id/txtJumlahDetail"
+                android:layout_width="46dp"
+                android:layout_height="34dp"
+                android:text="1"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/btnTambahDetail"
+                app:layout_constraintEnd_toStartOf="@+id/btnTambahDetail"
+                app:layout_constraintStart_toEndOf="@+id/btnKurangDetail"
+                app:layout_constraintTop_toTopOf="@+id/btnKurangDetail" />
 
-        <ImageView
-            android:id="@+id/imgFotoDetail"
-            android:layout_width="360dp"
-            android:layout_height="180dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            <TextView
+                android:id="@+id/txtDeskripsiDetail"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:text="Nasi Goreng adalah.."
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/imgFotoDetail"
+                app:layout_constraintStart_toStartOf="@+id/txtNamaDetail"
+                app:layout_constraintTop_toBottomOf="@+id/txtNamaDetail" />
+
+            <ImageView
+                android:id="@+id/imgFotoDetail"
+                android:layout_width="360dp"
+                android:layout_height="180dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_launcher_foreground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

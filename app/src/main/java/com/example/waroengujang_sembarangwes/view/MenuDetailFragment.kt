@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.waroengujang_sembarangwes.R
+import com.example.waroengujang_sembarangwes.databinding.FragmentMenuDetailBinding
 import com.example.waroengujang_sembarangwes.model.CartItem
 import com.example.waroengujang_sembarangwes.viewmodel.CartViewModel
 import com.example.waroengujang_sembarangwes.viewmodel.MenuDetailViewModel
@@ -25,6 +26,8 @@ class MenuDetailFragment : Fragment() {
     private lateinit var cartViewModel: CartViewModel
     private lateinit var cartAdapter: CartItemAdapter
     private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var binding:FragmentMenuDetailBinding
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

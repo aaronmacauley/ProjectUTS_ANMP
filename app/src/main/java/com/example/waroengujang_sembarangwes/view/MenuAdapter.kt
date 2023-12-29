@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.waroengujang_sembarangwes.R
+import com.example.waroengujang_sembarangwes.databinding.CartItemBinding
+import com.example.waroengujang_sembarangwes.databinding.MenuItemBinding
 import com.example.waroengujang_sembarangwes.model.Menu
 import com.example.waroengujang_sembarangwes.viewmodel.MenuDetailViewModel
 import com.squareup.picasso.Picasso
@@ -25,6 +27,8 @@ class MenuAdapter(private val menu: ArrayList<Menu>, private val menuDetailViewM
     }
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
+        var binding: MenuItemBinding
+
         var txtNama = holder.itemView.findViewById<TextView>(R.id.textView)
         var txtHarga = holder.itemView.findViewById<TextView>(R.id.txtTableOrder)
         var txtKategori = holder.itemView.findViewById<TextView>(R.id.txtHargaOrder)

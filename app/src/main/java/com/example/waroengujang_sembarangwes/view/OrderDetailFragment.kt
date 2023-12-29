@@ -13,11 +13,13 @@ import androidx.navigation.Navigation
 import com.example.waroengujang_sembarangwes.R
 import com.example.waroengujang_sembarangwes.viewmodel.OrderDetailViewModel
 import androidx.navigation.fragment.findNavController
+import com.example.waroengujang_sembarangwes.databinding.FragmentOrderDetailBinding
 
 
 class OrderDetailFragment : Fragment() {
 
     private lateinit var viewModel: OrderDetailViewModel
+    private lateinit var binding:FragmentOrderDetailBinding
 
     private lateinit var txtTableOd: TextView
     private lateinit var txtDurationOd: TextView

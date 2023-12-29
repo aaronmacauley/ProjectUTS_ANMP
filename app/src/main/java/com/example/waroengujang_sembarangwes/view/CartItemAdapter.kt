@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.waroengujang_sembarangwes.R
+import com.example.waroengujang_sembarangwes.databinding.CartItemBinding
+import com.example.waroengujang_sembarangwes.databinding.FragmentCartBinding
 import com.example.waroengujang_sembarangwes.model.Menu
 import com.example.waroengujang_sembarangwes.viewmodel.SharedViewModel
 import com.squareup.picasso.Picasso
@@ -32,6 +34,7 @@ class CartItemAdapter(private val cartItems: ArrayList<CartItem>,
     }
 
     override fun onBindViewHolder(holder: CartItemViewHolder, position: Int) {
+        var binding: CartItemBinding
         var txtNama = holder.itemView.findViewById<TextView>(R.id.txtNamaItem)
         var txtHarga = holder.itemView.findViewById<TextView>(R.id.txtHargaItemCart)
         var txtQty = holder.itemView.findViewById<TextView>(R.id.txtItemCartQty)

@@ -11,18 +11,24 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.waroengujang_sembarangwes.R
+import com.example.waroengujang_sembarangwes.databinding.FragmentCartBinding
+import com.example.waroengujang_sembarangwes.databinding.FragmentHomeBinding
 import com.example.waroengujang_sembarangwes.viewmodel.HomeViewModel
 import com.example.waroengujang_sembarangwes.viewmodel.SharedViewModel
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
+    private lateinit var binding: FragmentHomeBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+//        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
