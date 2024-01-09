@@ -12,13 +12,13 @@ interface WaroengUjangDao {
     fun insertAll(vararg menu: Menu)
 
     @Query("SELECT * FROM menu_table")
-    fun selectAllTodo(): List<Menu>
+    fun selectAllMenu(): List<Menu>
 
     @Query("SELECT * FROM menu_table WHERE id= :id")
     fun selectTodo(id:Int): Menu
 
     @Delete
-    fun deleteTodo(todo:Menu)
+    fun deleteMenu(todo:Menu)
 
 
 

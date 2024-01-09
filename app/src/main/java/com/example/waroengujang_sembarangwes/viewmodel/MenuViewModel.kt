@@ -13,11 +13,13 @@ import com.example.waroengujang_sembarangwes.model.Menu
 import com.example.waroengujang_sembarangwes.model.WaroengUjangDatabase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class MenuViewModel(application: Application): AndroidViewModel(application) {
+class MenuViewModel(application: Application): AndroidViewModel(application),CoroutineScope {
 
     val menuLd = MutableLiveData<List<Menu>>()
 
@@ -25,26 +27,23 @@ class MenuViewModel(application: Application): AndroidViewModel(application) {
     override val coroutineContext: CoroutineContext get() = job + Dispatchers.IO
 
     fun refresh() {
-
-        menuLd.value = true
-
         launch {
             val db = Room.databaseBuilder(
-                getApplication(),
-                WaroengUjangDatabase::class.java, "WaroengUjang"
+                getApplication(),WaroengUjangDatabase::class.java,"WaroengUjang"
             ).build()
 
-            menuLd.postValue(db.WaroengUjangDao().selectAllTodo())
+            menuLd.postValue(db.waroengUjangDao().selectAllMenu())
         }
     }
-    fun clearTask(menu: Menu) {
-        launch {
-            val db = Room.databaseBuilder(
-                getApplication(),
-                WaroengUjangDatabase::class.java, "WaroengUjang").build()
-            db.WaroengUjangDao().deleteTodo(menu)
 
-            menuLd.postValue(db.WaroengUjangDao().selectAllTodo())
+    fun clearTask(menu:Menu){
+        launch {
+            val db=Room.databaseBuilder(
+                getApplication(),WaroengUjangDatabase::class.java,"WaroengUjang"
+            ).build()
+            db.waroengUjangDao().deleteMenu(menu)
+
+            menuLd.postValue(db.waroengUjangDao().selectAllMenu())
         }
     }
 
