@@ -73,7 +73,7 @@ class MenuFragment : Fragment() {
         btnSearch.setOnClickListener {
             val searchQuery = editSearch.text?.toString()?.trim()
 
-            val menus = viewModel.menusLD.value
+            val menus = viewModel.menuLd.value
             val filteredMenu = menus?.filter { menu ->
                 searchQuery?.let { it1 -> menu?.nama?.contains(it1, ignoreCase = true) } == true
             }
@@ -83,8 +83,10 @@ class MenuFragment : Fragment() {
     }
 
     fun observeViewModel() {
-        viewModel.menusLD.observe(viewLifecycleOwner, Observer {
-            menuAdapter.updateMenu(it)
+        viewModel.menuLd.observe(viewLifecycleOwner, Observer { menuList ->
+            val menuArrayList = menuList?.toCollection(ArrayList()) ?: ArrayList()
+            menuAdapter.updateMenu(menuArrayList)
         })
     }
+
 }

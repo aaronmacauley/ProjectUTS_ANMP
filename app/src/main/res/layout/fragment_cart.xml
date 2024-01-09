@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="processToKitchenListener" type="com.example.waroengujang_sembarangwes.view.processToKitchenListener" />
+        <variable name="processToKitchenListener" type="com.example.waroengujang_sembarangwes.view.ProcessToKitchenListener" />
     </data>
 
     <FrameLayout

@@ -78,7 +78,7 @@ class MenuDetailFragment : Fragment() {
         }
 
         // Add to cart disini.
-        btnAddDetail?.setOnClickListener{
+        btnAddDetail?.setOnClickListener {
             val menu = viewModel.menuLD.value
             menu?.let { menuItem ->
                 val existingCartItem = cartViewModel.cartItems.value?.find { it.menuItem.nama == menuItem.nama }
@@ -88,7 +88,7 @@ class MenuDetailFragment : Fragment() {
                 if (existingCartItem != null) {
                     existingCartItem.quantity += selectedQuantity
                 } else {
-                    val cartItem = CartItem(menuItem, selectedQuantity)
+                    val cartItem = CartItem(menuItem = menuItem, quantity = selectedQuantity)
                     cartViewModel.addToCart(cartItem)
                 }
 
@@ -98,9 +98,8 @@ class MenuDetailFragment : Fragment() {
 
             Toast.makeText(requireContext(), "Item added to Cart", Toast.LENGTH_SHORT).show()
 
-
-
-            Log.e("XXX", "asu: ${cartViewModel.cartItems.value}", )
+            Log.e("XXX", "asu: ${cartViewModel.cartItems.value}")
         }
+
     }
 }

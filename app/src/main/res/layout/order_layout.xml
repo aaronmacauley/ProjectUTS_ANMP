@@ -5,7 +5,7 @@
 
     <data>
         <variable name="order" type="com.example.waroengujang_sembarangwes.model.Order" />
-        <variable name="orderDetailListener" type="com.example.waroengujang_sembarangwes.view.orderDetailListener" />
+        <variable name="orderDetailListener" type="com.example.waroengujang_sembarangwes.view.OrderDetailListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

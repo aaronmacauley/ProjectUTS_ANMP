@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="closeBillListener" type="com.example.waroengujang_sembarangwes.view.closeBillListener" />
-        <variable name="orderDetailListener" type="com.example.waroengujang_sembarangwes.view.orderDetailListener" />
+        <variable name="closeBillListener" type="com.example.waroengujang_sembarangwes.view.CloseBillListener" />
+        <variable name="orderDetailListener" type="com.example.waroengujang_sembarangwes.view.OrderDetailListener" />
     </data>
 
     <FrameLayout

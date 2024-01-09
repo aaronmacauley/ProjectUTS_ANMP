@@ -5,7 +5,7 @@
 
     <data>
         <variable name="waiter" type="com.example.waroengujang_sembarangwes.model.Waiter" />
-        <variable name="submitTableNumberListener" type="com.example.waroengujang_sembarangwes.view.submitTableNumberListener" />
+        <variable name="submitTableNumberListener" type="com.example.waroengujang_sembarangwes.view.SubmitTableNumberListener" />
 
     </data>
 

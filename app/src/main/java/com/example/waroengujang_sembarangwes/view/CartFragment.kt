@@ -31,6 +31,8 @@ class CartFragment : Fragment() {
     private lateinit var btnProses: Button
     private lateinit var txtTableNum: TextView
     private var total by Delegates.notNull<Double>()
+    private var processToKitchenListener: ProcessToKitchenListener? = null
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -83,6 +85,16 @@ class CartFragment : Fragment() {
         }
 
         return view
+    }
+
+    // Method buat set listener
+    fun setProcessToKitchenListener(listener: ProcessToKitchenListener) {
+        this.processToKitchenListener = listener
+    }
+
+    // Method pas view di klik
+    fun onClickProcessToKitchen(view: View) {
+        processToKitchenListener?.onProcessToKitchenListener(view)
     }
 
     private fun calculateSubtotal(cartItems: List<CartItem>): Double {

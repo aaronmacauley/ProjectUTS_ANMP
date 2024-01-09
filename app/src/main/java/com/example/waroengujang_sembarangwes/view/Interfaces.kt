@@ -2,26 +2,26 @@ package com.example.waroengujang_sembarangwes.view
 
 import android.view.View
 
-interface submitTableNumberListener{
+interface SubmitTableNumberListener{
     fun onSubmitTableNumberListener(v: View)
 }
 
-interface processToKitchenListener{
+interface ProcessToKitchenListener{
     fun onProcessToKitchenListener(v: View)
 }
 
-interface addMenuToOrderListener{
+interface AddMenuToOrderListener{
     fun onAddMenuToOrderListener(v: View)
 }
 
-interface menuDetailListener{
+interface MenuDetailListener{
     fun onMenuDetailListener(v: View)
 }
 
-interface orderDetailListener{
+interface OrderDetailListener{
     fun onOrderDetailListener(v: View)
 }
 
-interface closeBillListener{
+interface CloseBillListener{
     fun onCloseBillListener(v: View)
 }

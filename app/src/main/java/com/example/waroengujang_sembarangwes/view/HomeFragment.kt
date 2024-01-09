@@ -19,7 +19,7 @@ import com.example.waroengujang_sembarangwes.viewmodel.SharedViewModel
 class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
-
+    private var submitTableNumberListener: SubmitTableNumberListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,5 +74,15 @@ class HomeFragment : Fragment() {
             editTableHome.visibility = View.VISIBLE
             btnSubmitHome.visibility = View.VISIBLE
         }
+    }
+
+    // Method buat set listener
+    fun setSubmitTableNumberListener(listener: SubmitTableNumberListener) {
+        this.submitTableNumberListener = listener
+    }
+
+    // Method pas view di klik
+    fun onClickSubmitTableNumber(view: View) {
+        submitTableNumberListener?.onSubmitTableNumberListener(view)
     }
 }
