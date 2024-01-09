@@ -9,13 +9,13 @@ import androidx.room.Query
 @Dao
 interface WaroengUjangDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg menu: Menu)
+    fun insertMenu(vararg menu: Menu)
 
     @Query("SELECT * FROM menu_table")
     fun selectAllMenu(): List<Menu>
 
     @Query("SELECT * FROM menu_table WHERE id= :id")
-    fun selectTodo(id:Int): Menu
+    fun selectMenuDetail(id:Int): Menu
 
     @Delete
     fun deleteMenu(todo:Menu)
